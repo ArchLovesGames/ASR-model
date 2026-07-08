@@ -1,0 +1,77 @@
+{
+  "dataset": "example_data/custom",
+  "language": "English",
+  "train_samples_available": 5,
+  "test_samples_available": 5,
+  "train_samples_used": 3,
+  "validation_samples_used": 0,
+  "test_samples_used": 2,
+  "train_duration_seconds_available": 30.97,
+  "test_duration_seconds_available": 33.29,
+  "splits": {
+    "train": [
+      {
+        "index": 0,
+        "audio": "example_data/custom/train/clips/rec_0.wav",
+        "sentence": "GO DO YOU HEAR",
+        "duration_seconds": 2.09
+      },
+      {
+        "index": 1,
+        "audio": "example_data/custom/train/clips/rec_1.wav",
+        "sentence": "BUT IN LESS THAN FIVE MINUTES THE STAIRCASE GROANED BENEATH AN EXTRAORDINARY WEIGHT",
+        "duration_seconds": 3.99
+      },
+      {
+        "index": 2,
+        "audio": "example_data/custom/train/clips/rec_2.wav",
+        "sentence": "AT THIS MOMENT THE WHOLE SOUL OF THE OLD MAN SEEMED CENTRED IN HIS EYES WHICH BECAME BLOODSHOT THE VEINS OF THE THROAT SWELLED HIS CHEEKS AND TEMPLES BECAME PURPLE AS THOUGH HE WAS STRUCK WITH EPILEPSY NOTHING WAS WANTING TO COMPLETE THIS BUT THE UTTERANCE OF A CRY",
+        "duration_seconds": 13.69
+      },
+      {
+        "index": 3,
+        "audio": "example_data/custom/train/clips/rec_3.wav",
+        "sentence": "AND THE CRY ISSUED FROM HIS PORES IF WE MAY THUS SPEAK A CRY FRIGHTFUL IN ITS SILENCE",
+        "duration_seconds": 6.8
+      },
+      {
+        "index": 4,
+        "audio": "example_data/custom/train/clips/rec_4.wav",
+        "sentence": "D'AVRIGNY RUSHED TOWARDS THE OLD MAN AND MADE HIM INHALE A POWERFUL RESTORATIVE",
+        "duration_seconds": 4.4
+      }
+    ],
+    "test": [
+      {
+        "index": 0,
+        "audio": "example_data/custom/test/clips/rec_0.wav",
+        "sentence": "D'AVRIGNY UNABLE TO BEAR THE SIGHT OF THIS TOUCHING EMOTION TURNED AWAY AND VILLEFORT WITHOUT SEEKING ANY FURTHER EXPLANATION AND ATTRACTED TOWARDS HIM BY THE IRRESISTIBLE MAGNETISM WHICH DRAWS US TOWARDS THOSE WHO HAVE LOVED THE PEOPLE FOR WHOM WE MOURN EXTENDED HIS HAND TOWARDS THE YOUNG MAN",
+        "duration_seconds": 15.96
+      },
+      {
+        "index": 1,
+        "audio": "example_data/custom/test/clips/rec_1.wav",
+        "sentence": "FOR SOME TIME NOTHING WAS HEARD IN THAT CHAMBER BUT SOBS EXCLAMATIONS AND PRAYERS",
+        "duration_seconds": 5.62
+      },
+      {
+        "index": 2,
+        "audio": "example_data/custom/test/clips/rec_2.wav",
+        "sentence": "WHAT DO YOU MEAN SIR",
+        "duration_seconds": 2.0
+      },
+      {
+        "index": 3,
+        "audio": "example_data/custom/test/clips/rec_3.wav",
+        "sentence": "OH YOU RAVE SIR EXCLAIMED VILLEFORT IN VAIN ENDEAVORING TO ESCAPE THE NET IN WHICH HE WAS TAKEN I RAVE",
+        "duration_seconds": 7.015
+      },
+      {
+        "index": 4,
+        "audio": "example_data/custom/test/clips/rec_4.wav",
+        "sentence": "DO YOU KNOW THE ASSASSIN ASKED MORREL",
+        "duration_seconds": 2.695
+      }
+    ]
+  }
+}

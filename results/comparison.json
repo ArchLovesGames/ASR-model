@@ -1,0 +1,22 @@
+{
+  "baseline_model": "openai/whisper-tiny",
+  "finetuned_model": "artifacts/activity-whisper-tiny-custom",
+  "baseline_wer": 7.936507936507936,
+  "finetuned_wer": 7.936507936507936,
+  "rows": [
+    {
+      "sample_id": 0,
+      "audio": "example_data/custom/test/clips/rec_0.wav",
+      "reference": "D'AVRIGNY UNABLE TO BEAR THE SIGHT OF THIS TOUCHING EMOTION TURNED AWAY AND VILLEFORT WITHOUT SEEKING ANY FURTHER EXPLANATION AND ATTRACTED TOWARDS HIM BY THE IRRESISTIBLE MAGNETISM WHICH DRAWS US TOWARDS THOSE WHO HAVE LOVED THE PEOPLE FOR WHOM WE MOURN EXTENDED HIS HAND TOWARDS THE YOUNG MAN",
+      "baseline_prediction": " Davini, unable to bear the sight of this touching emotion turned away and vilafort, without seeking any further explanation and attracted towards him by the irresistible magnetism which draws us towards those who have loved the people for whom we mourn, extended his hand towards the young man.",
+      "finetuned_prediction": " Davini, unable to bear the sight of this touching emotion turned away and vilafort, without seeking any further explanation and attracted towards him by the irresistible magnetism which draws us towards those who have loved the people for whom we mourn, extended his hand towards the young man."
+    },
+    {
+      "sample_id": 1,
+      "audio": "example_data/custom/test/clips/rec_1.wav",
+      "reference": "FOR SOME TIME NOTHING WAS HEARD IN THAT CHAMBER BUT SOBS EXCLAMATIONS AND PRAYERS",
+      "baseline_prediction": " For some time, nothing was heard in that chamber but subs, exclamation and prayers.",
+      "finetuned_prediction": " For some time nothing was heard in that chamber but subs, exclamation and prayers."
+    }
+  ]
+}

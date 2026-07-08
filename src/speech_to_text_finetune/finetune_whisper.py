@@ -12,6 +12,7 @@ from transformers.models.whisper.tokenization_whisper import TO_LANGUAGE_CODE
 import torch
 from typing import Dict, Tuple
 import evaluate
+import jiwer
 from loguru import logger
 
 from speech_to_text_finetune.config import load_config
@@ -27,6 +28,28 @@ from speech_to_text_finetune.utils import (
     create_model_card,
     compute_wer_cer_metrics,
 )
+
+
+class _LocalJiwerMetric:
+    def __init__(self, metric_name: str):
+        self.metric_name = metric_name
+
+    def compute(self, predictions, references):
+        if self.metric_name == "wer":
+            return jiwer.wer(references, predictions)
+        if self.metric_name == "cer":
+            return jiwer.cer(references, predictions)
+        raise ValueError(f"Unsupported local metric {self.metric_name}")
+
+
+def _load_metric(metric_name: str):
+    try:
+        return evaluate.load(metric_name)
+    except FileNotFoundError:
+        logger.warning(
+            f"Metric {metric_name} is not cached and cannot be downloaded. Falling back to local jiwer."
+        )
+        return _LocalJiwerMetric(metric_name)
 
 
 def run_finetuning(
@@ -120,8 +143,8 @@ def run_finetuning(
             f"automatically use this processed version."
         )
 
-    wer = evaluate.load("wer")
-    cer = evaluate.load("cer")
+    wer = _load_metric("wer")
+    cer = _load_metric("cer")
 
     trainer = Seq2SeqTrainer(
         args=training_args,
@@ -158,9 +181,14 @@ def run_finetuning(
         logger.info("Stopping the finetuning job prematurely...")
     else:
         logger.info("Finetuning job complete.")
+        trainer.save_model(training_args.output_dir)
+        processor.save_pretrained(training_args.output_dir)
+        trainer.save_metrics("train", trainer.state.log_history[-1] if trainer.state.log_history else {})
+        trainer.save_state()
 
     logger.info(f"Start evaluation on {dataset['test'].num_rows} audio samples.")
     eval_results = trainer.evaluate()
+    trainer.save_metrics("eval", eval_results)
     logger.info(f"Evaluation complete. Results:\n\t {eval_results}")
     model_card = create_model_card(
         model_id=cfg.model_id,

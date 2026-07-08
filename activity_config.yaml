@@ -1,0 +1,27 @@
+model_id: openai/whisper-tiny
+dataset_id: example_data/custom
+language: English
+repo_name: activity-whisper-tiny-custom
+n_train_samples: 3
+n_test_samples: 2
+
+training_hp:
+    push_to_hub: False
+    hub_private_repo: True
+    max_steps: 3
+    per_device_train_batch_size: 1
+    gradient_accumulation_steps: 1
+    learning_rate: 1e-5
+    warmup_steps: 0
+    gradient_checkpointing: False
+    fp16: False
+    eval_strategy: steps
+    per_device_eval_batch_size: 1
+    predict_with_generate: True
+    generation_max_length: 96
+    save_steps: 3
+    logging_steps: 1
+    load_best_model_at_end: False
+    save_total_limit: 1
+    metric_for_best_model: wer
+    greater_is_better: False

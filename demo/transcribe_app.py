@@ -10,12 +10,16 @@ is_hf_space = os.getenv("IS_HF_SPACE")
 def get_dropdown_model_ids():
     mozilla_ai_model_ids = []
     # Get model ids from collection and append the language in () from the model's metadata
-    for model_i in get_collection(
-        "mozilla-ai/common-voice-whisper-67b847a74ad7561781aa10fd"
-    ).items:
-        model_metadata = HfApi().model_info(model_i.item_id)
-        language = model_metadata.card_data.model_name.split("on ")[1]
-        mozilla_ai_model_ids.append(model_i.item_id + f" ({language})")
+    try:
+        for model_i in get_collection(
+            "mozilla-ai/common-voice-whisper-67b847a74ad7561781aa10fd"
+        ).items:
+            model_metadata = HfApi().model_info(model_i.item_id)
+            language = model_metadata.card_data.model_name.split("on ")[1]
+            mozilla_ai_model_ids.append(model_i.item_id + f" ({language})")
+    except Exception:
+        # Keep local demos usable without network access to the Hugging Face collection.
+        mozilla_ai_model_ids = []
 
     return (
         [""]
@@ -40,7 +44,8 @@ def _load_local_model(model_dir: str) -> Pipeline | str:
         return pipeline(
             task="automatic-speech-recognition",
             model=model,
-            processor=processor,
+            tokenizer=processor.tokenizer,
+            feature_extractor=processor.feature_extractor,
             chunk_length_s=30,  # max input duration for whisper
         )
     except Exception as e:

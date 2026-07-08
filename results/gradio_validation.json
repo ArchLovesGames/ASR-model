@@ -1,0 +1,12 @@
+{
+  "app": "demo/transcribe_app.py",
+  "startup_result": "blocked",
+  "startup_error": "Gradio launch raised OSError: Cannot find empty port in range 7860-7959, and again for explicit range 8060-8159 in this managed environment.",
+  "component_validation": "Source inspection confirmed gr.Audio with microphone and upload sources, local model textbox, and Transcribe button.",
+  "inference_validation": "Direct call to transcribe_app.transcribe using artifacts/activity-whisper-tiny-custom and example_data/custom/test/clips/rec_1.wav returned a real transcription.",
+  "inference_output": "For some time nothing was heard in that chamber but subs, exclamation and prayers.",
+  "fixes_applied": [
+    "Added offline-safe fallback when Hugging Face collection lookup is unavailable.",
+    "Changed local model pipeline loader to pass tokenizer and feature_extractor explicitly for Transformers 4.46.3."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "config": "activity_config.yaml",
+  "model_checkpoint": "openai/whisper-tiny",
+  "output_model_dir": "artifacts/activity-whisper-tiny-custom",
+  "dataset": "example_data/custom",
+  "train_samples": 3,
+  "test_samples": 2,
+  "runtime_seconds": 13.777,
+  "baseline_eval": {
+    "eval_loss": 3.016782760620117,
+    "eval_model_preparation_time": 0.0011,
+    "eval_wer_ortho": 100.0,
+    "eval_wer": 7.936507936507936,
+    "eval_cer_ortho": 84.8,
+    "eval_cer": 2.1333333333333333,
+    "eval_runtime": 1.3849,
+    "eval_samples_per_second": 1.444,
+    "eval_steps_per_second": 1.444
+  },
+  "finetuned_eval": {
+    "eval_loss": 2.656809091567993,
+    "eval_model_preparation_time": 0.0011,
+    "eval_wer_ortho": 100.0,
+    "eval_wer": 7.936507936507936,
+    "eval_cer_ortho": 84.53333333333333,
+    "eval_cer": 2.1333333333333333,
+    "eval_runtime": 1.2746,
+    "eval_samples_per_second": 1.569,
+    "eval_steps_per_second": 1.569,
+    "epoch": 1.0
+  }
+}

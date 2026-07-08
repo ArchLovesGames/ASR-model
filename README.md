@@ -63,6 +63,22 @@ Text output:
 
 </div>
 
+## Local activity quick start
+
+This checkout includes a completed short ASR fine-tuning activity in `REPORT.md`.
+It uses the bundled `example_data/custom` WAV dataset and `openai/whisper-tiny`.
+
+```bash
+.venv313/bin/python scripts/activity_dataset_summary.py
+.venv313/bin/python scripts/activity_transcribe.py --model openai/whisper-tiny --output results/baseline_results.json --limit 2
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 .venv313/bin/python scripts/run_activity_training.py
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 .venv313/bin/python scripts/activity_transcribe.py --model artifacts/activity-whisper-tiny-custom --output results/finetuned_results.json --limit 2
+.venv313/bin/python scripts/activity_compare_results.py
+```
+
+Results are saved under `results/`; the trained model is saved under
+`artifacts/activity-whisper-tiny-custom`.
+
 ## Try it locally
 
 The same instructions apply for the GitHub Codespaces option.
