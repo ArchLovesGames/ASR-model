@@ -9,14 +9,15 @@ license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
 dynamic = ["version"]
 dependencies = [
-  "accelerate",
-  "datasets[audio]",
-  "evaluate",
-  "gradio",
-  "jiwer",
+  "accelerate>=1,<2",
+  "datasets[audio]>=3,<5",
+  "evaluate>=0.4,<0.5",
+  "gradio>=5,<6",
+  "jiwer>=3,<4",
   "loguru",
+  "soundfile",
   "tensorboard",
-  "transformers",
+  "transformers>=4.46,<5",
 ]
 
 [project.optional-dependencies]

@@ -295,20 +295,17 @@ def process_dataset(
         else None,
         batched=True,
         batch_size=batch_size,
-        num_proc=1,
     )
 
     dataset = dataset.filter(
         _is_audio_in_length_range,
         input_columns=["input_length"],
         fn_kwargs={"max_input_length": 30.0},
-        num_proc=1,
     )
     dataset = dataset.filter(
         _are_labels_in_length_range,
         input_columns=["labels"],
         fn_kwargs={"max_label_length": 448},
-        num_proc=1,
     )
 
     proc_dataset_path = Path(proc_dataset_path)
