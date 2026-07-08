@@ -61,7 +61,8 @@ def main() -> None:
         "num_samples": len(predictions),
         "load_seconds": round(load_seconds, 3),
         "inference_seconds": round(time.time() - infer_started, 3),
-        "wer": 100 * wer_metric.compute(predictions=predictions_norm, references=references_norm),
+        "wer": 100
+        * wer_metric.compute(predictions=predictions_norm, references=references_norm),
         "predictions": predictions,
     }
     Path(args.output).write_text(json.dumps(result, indent=2))

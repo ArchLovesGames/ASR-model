@@ -183,7 +183,9 @@ def run_finetuning(
         logger.info("Finetuning job complete.")
         trainer.save_model(training_args.output_dir)
         processor.save_pretrained(training_args.output_dir)
-        trainer.save_metrics("train", trainer.state.log_history[-1] if trainer.state.log_history else {})
+        trainer.save_metrics(
+            "train", trainer.state.log_history[-1] if trainer.state.log_history else {}
+        )
         trainer.save_state()
 
     logger.info(f"Start evaluation on {dataset['test'].num_rows} audio samples.")
